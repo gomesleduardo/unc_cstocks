@@ -21,13 +21,12 @@ Open your terminal and run the following command to clone this repository:
 git clone https://gitlab.com/gomesleduardo/unc_cstocks.git
 ```
 
-### 2. Run the main script
+### 2. Run the script directly in R:
 
-After cloning the repository, navigate to the project folder and run the `00__run.R` script:
+After cloning the repository, navigate to the project folder and run the `00__run.R` script directly in R:
 
 ``` bash
-cd unc_cstocks
-Rscript 00__run.R
+source("00__run.R")
 ```
 
 ### 3. Check the results
