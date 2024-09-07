@@ -29,7 +29,7 @@ range_legend <- "G3:M50" # <- Verificar a cada nova versao!
 
 ## Data set: Legend (BRLUC Cstock classes) ----
 legend_df <- readxl::read_excel(
-  path = paste0('planilhas/', spreadsheet_name), 
+  path = paste0('data/', spreadsheet_name), 
   sheet = "Legend", range = range_legend) %>% 
   janitor::clean_names() %>% 
   dplyr::filter(
@@ -44,7 +44,7 @@ legend_df <- readxl::read_excel(
 ## Data set: Microregions codes and names ----
 micro_df <- 
   readxl::read_excel(
-    path = paste0('planilhas/', spreadsheet_name),
+    path = paste0('data/', spreadsheet_name),
     sheet = "Climates Micro", range = "A3:J560",
     col_names = c(
       "IBGE_code", "name", "tropical__dry", "tropical__moist", 
@@ -115,7 +115,7 @@ for (k in 1:nrow(legend_df)) {
   
   # ---- Load result
   load(file.path(
-    'extra/applications/1__tc_microreg/results', 
+    'cstocks/1__tc_microreg/results/mc/', 
     paste0("MC__tc__", legend_df$label[k], ".Rda")
   ))
   
@@ -228,7 +228,7 @@ for (k in 1:nrow(legend_df)) {
   
   # ---- Load result
   load(file.path(
-    'extra/applications/1__tc_microreg/results/tables/uncertainty_decomposition', 
+    'cstocks/1__tc_microreg/results/tables/uncertainty_decomposition', 
     paste0("unc_decomp__tc__", legend_df$label[k], ".Rda")
   ))
   
@@ -295,8 +295,7 @@ for (j in (3:(3 * k + 2 * (k - 1) + 4))) {
 openxlsx::saveWorkbook(
   wb, 
   file = paste0(
-    'extra/applications/1__tc_microreg/results/tables/tabelas_usuario/',
-    'brluc1_stocks_unc',
+    'results/', 'brluc_unc_cstocks',
     # gsub("-", "", as.character(Sys.Date())),
     '.xlsx'
   ),
